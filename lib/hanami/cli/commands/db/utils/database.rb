@@ -105,6 +105,12 @@ module Hanami
               sequel_migrator.applied_migrations
             end
 
+            def migrations_pending?
+              require "debug"
+              binding.break
+              !sequel_migrator.is_current?
+            end
+
             private
 
             def sequel_migrator

@@ -21,6 +21,7 @@ module Hanami
         require_relative "monolith/db/seed"
         require_relative "monolith/db/structure/dump"
         require_relative "monolith/db/version"
+        require_relative "monolith/db/abort_if_pending_migrations"
 
         def self.extended(base)
           base.module_eval do
@@ -47,6 +48,7 @@ module Hanami
             register "db seed", Commands::Monolith::DB::Seed
             register "db structure dump", Commands::Monolith::DB::Structure::Dump
             register "db version", Commands::Monolith::DB::Version
+            register "db abort_if_pending_migrations", Commands::Monolith::DB::AbortIfPendingMigrations
           end
         end
       end
